@@ -109,7 +109,7 @@ public class WrappedMediaPlayer extends Player implements MediaPlayer.OnPrepared
 
             int position = 0;
             if (player != null) {
-                position = player.getCurrentPosition();
+                position = this.getCurrentPosition();
             }
 
             this.released = false;
@@ -188,12 +188,18 @@ public class WrappedMediaPlayer extends Player implements MediaPlayer.OnPrepared
 
     @Override
     int getDuration() {
-        return this.player.getDuration();
+        if (this.player != null && this.prepared) {
+            return this.player.getDuration();
+        }
+        return 0;
     }
 
     @Override
     int getCurrentPosition() {
-        return this.player.getCurrentPosition();
+        if (this.player != null && this.prepared) {
+            return this.player.getCurrentPosition();
+        }
+        return 0;
     }
 
     @Override
