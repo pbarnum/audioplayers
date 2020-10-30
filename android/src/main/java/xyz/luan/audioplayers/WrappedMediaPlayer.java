@@ -190,7 +190,7 @@ public class WrappedMediaPlayer extends Player implements MediaPlayer.OnPrepared
     int getDuration() {
         try {
             return this.player.getDuration();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             throw new RuntimeException("Unable to access resource", ex);
         }
         // if (this.player != null && this.prepared) {
